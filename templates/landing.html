@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+   <style>
+    *{
+        font-family: sans-serif;
+    }
+    .header{
+        font-size: 25px;
+        padding: 5px;
+        background: rgb(26,23,110);
+background: linear-gradient(0deg, rgba(26,23,110,1) 0%, rgba(0,0,0,1) 100%);
+        text-align: center;
+        color: wheat;
+        box-shadow: 0 0 15px black;
+    }
+    .icon{
+        float: right;
+        font-size: 20px;
+        border: 2px solid grey;
+        border-radius: 5px;
+        padding: 5px;
+    }
+    a{
+        text-decoration: none;
+        color: white;
+    }
+    a:hover{
+        color: grey;
+        text-decoration: dashed;
+    }
+    table{
+        text-align: center;
+        margin-left: 25%;
+    }
+    tr{
+     height:40px        
+    }
+    td{
+        width: 20%;
+    }
+   </style>
+</head>
+<body>
+    <section class="header">
+      <h1>Welcome To Staff Dashboard Page</h1>
+    </section>
+    <section style="background-image: url(https://images.unsplash.com/photo-1579548122080-c35fd6820ecb?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=2000&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ);height: 100vh;">
+    <section class="icon" style="background-color: transparent;backdrop-fliter:blur(12px);">
+      <div><i class="fa-solid fa-user"></i></div>
+      <div>Hello {{ staff_name }}</div>
+      <div><a href="{{ url_for('edit_profile') }}" >Edit Profile</a></div>
+    
+    </section>
+    <section >
+      <form method="GET" action="{{ url_for('training_request') }}">
+        <button type="submit" style="color:white;background-color: orangered;font-size: 20px;padding: 7px;border-radius: 4px;">Add Training</button>
+      </form>
+    </section>
+    <section class="training-requests">
+        <h2 style="text-align: center; font-size: 30px; font-weight: 400;">Training Requests</h2>
+        {% if training_requests %}
+        <table border="1px" style="font-size: 20px;">
+            <tr>
+                <th>Course</th>
+                <th>Status</th>
+            </tr>
+            {% for request in training_requests %}
+            <tr>
+                <td>{{ request.course_name }}</td>
+                <td>{{ request.status }}</td>
+            </tr> 
+            {% endfor %}
+        </table>
+        {% else %}
+        <p style="text-align: center; font-size: 20px;">No courses requested.</p>
+        {% endif %}  
+      </section>
+    </section>
+
+  </body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <title>Training Request</title>
+  <style>
+         
+   form{
+      margin-top: 420px; 
+      margin-bottom: `150px;
+      background-color: transparent;
+      color: white;
+      padding: 40px;
+      width: 500px;
+      box-shadow: 0 0 10px gray;
+      border-radius: 7px;
+    }
+    button{
+      margin-left: 40%;
+      font-size: 22px;
+      padding: 10px;
+      border-radius: 5px;
+          }
+    form input{
+      font-size: 20px;
+        height: 20px;
+        margin: 5px;
+        padding: 6px;
+    }
+    div{
+      margin:30px;
+    }
+
+  </style>
+</head>
+<body style="background-image: url(https://wallpaperaccess.com/full/2273154.jpg);">
+    <form method="POST" action="{{ url_for('training_request') }}">
+    <h1>Training Request</h1>
+    <div>
+      <label for="staff_name">Staff Name:</label><br>
+      <input type="text" id="staff_name" name="staff_name" value="{{ name }}">
+    </div>
+    <div>
+      <label for="course_name">Course Name:</label><br>
+      <input type="text" id="course_name" name="course_name" required>
+    </div>
+    <div>
+      <label for="training_provider">Training Provider:</label><br>
+      <input type="text" id="training_provider" name="training_provider" required>
+    </div>
+    <div>
+      <label for="organization">Organization:</label><br>
+      <input type="text" id="organization" name="organization" required>
+    </div>
+    <div>
+      <label for="duration">Duration (in days):</label><br>
+      <input type="number" id="duration" name="duration" required>
+    </div>
+    <div>
+      <label for="from_date">From Date:</label><br>
+      <input type="date" id="from_date" name="from_date" required>
+    </div>
+    <div>
+      <label for="to_date">To Date:</label><br>
+      <input type="date" id="to_date" name="to_date" required>
+    </div>
+    <div>
+      <label for="budget">Budget:</label><br>
+      <input type="number" id="budget" name="budget">
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>

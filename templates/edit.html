@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <style>
+    
+     
+   form{
+      margin-top: 390px; 
+      margin-bottom: 50px;
+      background-color: transparent;
+      color: white;
+      padding: 40px;
+      width: 500px;
+      box-shadow: 0 0 10px gray;
+      border-radius: 7px;
+    }
+    button{
+      margin-left: 40%;
+      font-size: 22px;
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 20px;
+          }
+    form input{
+      font-size: 22px;
+        height: 20px;
+        padding: 6px;
+    }
+    div{
+      margin:30px;
+    }
+
+  </style>
+  <title>Edit Profile</title>
+  <!-- Add any CSS stylesheets or external libraries if needed -->
+</head>
+<body style="background-image: url(https://wallpaperaccess.com/full/2273154.jpg);">
+
+  <form method="POST">
+    <h1 style="font-size: 32px;">Edit Profile</h1>
+    {{ form.hidden_tag() }}
+    <div>
+      {{ form.name.label }}<br><br>
+      {{ form.name(value=user_details['name'], style='font-size: 20px;') }}
+    </div>
+    <div>
+      {{ form.dob.label }}<br><br>
+      {{ form.dob(value=user_details['dob'], style='font-size: 20px;') }}
+    </div>
+    <div>
+      {{ form.qualification.label }}<br><br>
+      {{ form.qualification(value=user_details['qualification'], style='font-size: 20px;') }}
+    </div>
+    <div>
+      {{ form.role.label }}<br><br>
+      {{ form.role(value=user_details['role'], style='font-size: 20px;') }}
+    </div>
+    <div>
+      {{ form.phone.label }}<br><br>
+      {{ form.phone(value=user_details['phone'], style='font-size: 20px;') }}
+    </div>
+    <div>
+      {{ form.email.label }}<br><br>
+      {{ form.email(value=user_details['email'], style='font-size: 20px;') }}
+    </div>
+    <div>
+      {{ form.address.label }}<br><br>
+      {{ form.address(value=user_details['address'], style='font-size: 20px;') }}
+    </div>
+    <button type="submit" style="margin-left: 30%;">Update</button>
+   </form>
+   <br>
+</body>
+</html>

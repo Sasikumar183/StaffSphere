@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get History</title>
+    <style>
+        *{
+            font-family: sans-serif;
+            margin:0;
+            padding: 0;
+        }
+        .header{
+        font-size: 35px;
+        padding: 15px;
+        background: rgb(26,23,110);
+        background: linear-gradient(0deg, rgba(26,23,110,1) 0%, rgba(0,0,0,1) 100%);
+        text-align: center;
+        color: wheat;
+   
+    }
+    form{
+        font-size: 22px;
+        border: 1px solid gray;
+        border-radius: 5px;
+        padding:20px;
+        width: 50%;
+        height: 70px;
+        margin-left: 20%;
+    }
+    ul,li{
+        margin: 20px;
+
+    }
+    button{
+        background-color: orangered;
+        color: white;
+        font-size: 20px;
+        padding: 5px;
+        border-radius: 5px;
+    }
+    ul li{
+        list-style-type: none;
+    }
+    .op{
+        background-color: transparent;
+        backdrop-filter: blur(20px);
+        width: 30%;
+        font-size: 18px;
+        margin:20px;
+        border-radius: 4px;
+        border: 1px solid black;
+        padding: 20px;
+        margin-left: 30%;
+        box-shadow: 0 0 12px white;
+    }
+    .op h2{
+        font-weight: 500;
+        text-decoration: underline;
+    }
+    .bg{
+        background-image: url(https://th.bing.com/th/id/OIP.6urTJfN-da9xhfHOYv99FwHaEo?pid=ImgDet&w=474&h=296&rs=1);
+        height: 100vh;
+        color:white;
+        text-align: center;
+    }
+
+    </style>
+    </head>
+<body>
+    <h1 class="header">Get History</h1>
+    <section class="bg" >
+        <br>
+    <form method="post">
+        <label for="staff_id">Enter Staff ID:</label>
+        <input type="text" id="staff_id" name="staff_id" style="font-size: 22px;padding: 4px;">
+        <button type="submit">Submit</button>
+    </form>
+    <br><br>
+            <section class="op">
+    <h2 style="margin:20px;">Staff Name:   </h2><p style="margin-left: 10%;margin:20px;">  {{staff_name}}</p>
+    
+    <h2>Accepted Requests</h2>
+    {% if accepted_requests %}
+        <ul>
+            {% for request in accepted_requests %}
+                <li>{{ request.course_name }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No accepted courses.</p>
+    {% endif %}
+
+    <h2>Rejected Requests</h2>
+    {% if rejected_requests %}
+        <ul>
+            {% for request in rejected_requests %}
+                <li>{{ request.course_name }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No rejected courses.</p>
+    {% endif %}
+
+    <h2>Pending Requests</h2>
+    {% if pending_requests %}
+        <ul>
+            {% for request in pending_requests %}
+                <li>{{ request.course_name }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No pending courses.</p>
+    {% endif %}
+</section>
+</sectin>
+
+</body>
+</html>

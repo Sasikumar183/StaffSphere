@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <style>
+    form{
+      width: 500px;
+      background-color: transparent;
+      padding: 10px;
+      font-size: 22px;
+    }
+    div{
+      margin:30px;
+    }
+    button{
+      margin-left: 40%;
+      font-size: 22px;
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 20px;
+          }
+    form input{
+      height: 30px;
+      margin:10px;
+      font-size: 22px;
+      padding: 5px;
+    }
+  </style>
+</head>
+
+<body style="background-image: url(https://wallpapercave.com/wp/wp2508260.jpg);">
+  <div class="login-container" style="box-shadow: 0 0 10px white">
+    <form id="login-form" class="login-form" style="background-color: transparent;backdrop-filter:blur(0px);" method="post" action="{{ url_for('login') }}">
+      <h2 style="text-align: center;">Login</h2>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      {% for category, message in messages %}
+      <div class="alert alert-{{ category }}">
+        {{ message }}
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+      {{ form.hidden_tag() }}
+      <div class="form-group">
+        {{ form.staff_id.label }} {{ form.staff_id(size=32) }}
+      </div>
+      <div class="form-group">
+        {{ form.password.label }} {{ form.password(size=32) }}
+      </div>
+      <button type="submit">Login</button>
+      <div class="register-link" style="text-align: center;">
+      Don't have an account? <a href="{{ url_for('register') }}">Register</a>
+    </div>
+    </form>
+    
+  </div>
+</body>
+</html>
